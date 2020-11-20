@@ -89,7 +89,7 @@ class ControlActivity:AppCompatActivity(),TextToSpeech.OnInitListener{
 
         }
         locked.setOnClickListener {
-            sendCommand("0")
+            sendCommand("1")
             val text1 = "the lock has been unlocked"
             Texttospeech(text1)
 
@@ -98,7 +98,7 @@ class ControlActivity:AppCompatActivity(),TextToSpeech.OnInitListener{
             unlocked.visibility = View.VISIBLE
         }
         unlocked.setOnClickListener {
-            sendCommand("1")
+            sendCommand("0")
             val text1 = "the lock has been locked"
             Texttospeech(text1)
 
