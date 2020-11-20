@@ -152,12 +152,22 @@ class MainActivity : AppCompatActivity() {
         select_device_list.adapter = adapter
         select_device_list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
 //            val device: BluetoothDevice = list[position]
-            val address: String = list[position]
+            if (position % 2 == 0) {
+                val address: String = list[position + 1];
+                val intent = Intent(this, ControlActivity::class.java)
+                intent.putExtra("EXTRA_ADDRESS", address)
+                startActivity(intent)
 
-            val intent = Intent(this, ControlActivity::class.java)
-            intent.putExtra("EXTRA_ADDRESS", address)
-            startActivity(intent)
+            } else {
+                val address: String = list[position]
+
+
+                val intent = Intent(this, ControlActivity::class.java)
+                intent.putExtra("EXTRA_ADDRESS", address)
+                startActivity(intent)
+            }
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
